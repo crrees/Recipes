@@ -5,13 +5,57 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Homemade Potato Waffles (Birds Eye-style)</title>
   <style>
-    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.5;margin:0}
-    header,main{max-width:840px;margin:0 auto;padding:1.25rem}
-    .meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.5rem 1rem;margin-bottom:1rem}
-    .card{background:#f7f7f7;padding:.75rem 1rem;border-radius:.75rem}
-    img{max-width:100%;height:auto;border-radius:.75rem}
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #111;
+    }
+    header, main {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 1.25rem;
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.25rem;
+    }
+    h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    p.note {
+      margin-top: 0;
+      color: #333;
+    }
+    img {
+      display: block;
+      max-width: 100%;
+      width: 420px;      /* limit visible width */
+      height: auto;
+      border-radius: 0.75rem;
+      margin: 1rem 0;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin-bottom: 1rem;
+    }
+    .card {
+      background: #f7f7f7;
+      padding: .5rem .75rem;
+      border-radius: .5rem;
+      font-size: .95rem;
+    }
+    ul, ol {
+      padding-left: 1.25rem;
+    }
   </style>
 </head>
+
 <body>
 <div itemscope itemtype="https://schema.org/Recipe">
   <header>
@@ -21,8 +65,7 @@
 
   <main>
     <figure>
-      <!-- Update the src once you upload your image -->
-      <img itemprop="image" src="https://crrees.github.io/Recipes/assets/waffles.jpg" alt="Potato waffles on a plate">
+      <img itemprop="image" src="https://crrees.github.io/Recipes/assets/waffles.jpg" alt="Golden potato waffles on a plate">
     </figure>
 
     <div class="meta">
@@ -61,26 +104,23 @@
       </li>
     </ol>
 
-<!-- Nutrition (per waffle). Visible values, schema.org microdata -->
-<div itemprop="nutrition" itemscope itemtype="https://schema.org/NutritionInformation">
-  <h2>Nutrition (per waffle)</h2>
-  <ul>
-    <li><span itemprop="calories">115 calories</span></li>
-    <li>Fat: <span itemprop="fatContent">2.3 grams</span>
-        (sat <span itemprop="saturatedFatContent">0.2 grams</span>)</li>
-    <li>Carbs: <span itemprop="carbohydrateContent">21 grams</span>
-        (sugars <span itemprop="sugarContent">1 gram</span>)</li>
-    <li>Fibre: <span itemprop="fiberContent">1.8 grams</span></li>
-    <li>Protein: <span itemprop="proteinContent">2.3 grams</span></li>
-    <li>Sodium: <span itemprop="sodiumContent">200 milligrams</span></li>
-  </ul>
-  <p>Serving size: <span itemprop="servingSize">1 waffle</span>. Estimates for a 6-waffle batch.</p>
-</div>
+    <div itemprop="nutrition" itemscope itemtype="https://schema.org/NutritionInformation">
+      <h2>Nutrition (per waffle)</h2>
+      <ul>
+        <li><span itemprop="calories">115 calories</span></li>
+        <li>Fat: <span itemprop="fatContent">2.3 grams</span> (sat <span itemprop="saturatedFatContent">0.2 grams</span>)</li>
+        <li>Carbs: <span itemprop="carbohydrateContent">21 grams</span> (sugars <span itemprop="sugarContent">1 gram</span>)</li>
+        <li>Fibre: <span itemprop="fiberContent">1.8 grams</span></li>
+        <li>Protein: <span itemprop="proteinContent">2.3 grams</span></li>
+        <li>Sodium: <span itemprop="sodiumContent">200 milligrams</span></li>
+      </ul>
+      <p>Serving size: <span itemprop="servingSize">1 waffle</span>. Estimates for a 6-waffle batch.</p>
+    </div>
 
-
-
-    <p>By <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Chris</span></span>.
-      <meta itemprop="datePublished" content="2025-10-05"></p>
+    <p>By <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+      <span itemprop="name">Chris</span></span>.
+      <meta itemprop="datePublished" content="2025-10-05">
+    </p>
   </main>
 </div>
 </body>
