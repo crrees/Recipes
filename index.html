@@ -61,19 +61,22 @@
       </li>
     </ol>
 
-    <!-- Nutrition (per waffle, ~1/6 of recipe). Estimates. -->
-    <div itemprop="nutrition" itemscope itemtype="https://schema.org/NutritionInformation">
-      <meta itemprop="servingSize" content="1 waffle (approx 90–120 g)">
-      <meta itemprop="calories" content="115 calories">
-      <meta itemprop="carbohydrateContent" content="21 g">
-      <meta itemprop="proteinContent" content="2.3 g">
-      <meta itemprop="fatContent" content="2.3 g">
-      <meta itemprop="saturatedFatContent" content="0.2 g">
-      <meta itemprop="fiberContent" content="1.8 g">
-      <meta itemprop="sugarContent" content="1 g">
-      <meta itemprop="sodiumContent" content="200 mg">
-      <p><strong>Nutrition (per waffle):</strong> ~115 kcal • 21 g carbs • 2.3 g protein • 2.3 g fat (0.2 g sat) • 1.8 g fibre • 200 mg sodium. <em>Estimates based on 500 g potatoes, 40 g potato starch, 1 egg white, 1 tbsp rapeseed oil, 1/2 tsp salt; makes 6 waffles.</em></p>
-    </div>
+<!-- Nutrition (per waffle). Use visible spans, not meta tags. -->
+<div itemprop="nutrition" itemscope itemtype="https://schema.org/NutritionInformation">
+  <h2>Nutrition (per waffle)</h2>
+  <ul>
+    <li><span itemprop="calories">115 kcal</span></li>
+    <li>Fat: <span itemprop="fatContent">2.3 g</span>
+        (sat <span itemprop="saturatedFatContent">0.2 g</span>)</li>
+    <li>Carbs: <span itemprop="carbohydrateContent">21 g</span>
+        (sugars <span itemprop="sugarContent">1 g</span>)</li>
+    <li>Fibre: <span itemprop="fiberContent">1.8 g</span></li>
+    <li>Protein: <span itemprop="proteinContent">2.3 g</span></li>
+    <li>Sodium: <span itemprop="sodiumContent">200 mg</span></li>
+  </ul>
+  <p>Serving size: <span itemprop="servingSize">1 waffle</span>. Estimates for a 6-waffle batch.</p>
+</div>
+
 
     <p>By <span itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Chris</span></span>.
       <meta itemprop="datePublished" content="2025-10-05"></p>
