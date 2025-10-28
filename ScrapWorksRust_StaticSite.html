@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ScrapWorksRust | Modded Rust Servers</title>
+<style>
+  body { margin: 0; font-family: Arial, sans-serif; background-color: #18181b; color: #f4f4f5; }
+  header { text-align: center; padding: 40px 20px; }
+  header img { width: 180px; margin-bottom: 10px; }
+  h1 { font-size: 24px; margin: 10px 0; color: #f97316; }
+  p { color: #d4d4d8; }
+  section { max-width: 900px; margin: 0 auto; padding: 20px; }
+  .server-status { background-color: #27272a; border: 1px solid #3f3f46; border-radius: 12px; padding: 20px; margin-top: 20px; }
+  .online { color: #22c55e; }
+  .offline { color: #ef4444; }
+  code { display: block; background: #0a0a0a; padding: 10px; border-radius: 8px; color: #f4f4f5; margin-top: 10px; }
+  footer { text-align: center; font-size: 12px; color: #71717a; padding: 40px 10px; }
+</style>
+</head>
+<body>
+<header>
+  <img src="ScrapWorksRust_Banner_512x256.png" alt="ScrapWorksRust Logo">
+  <h1>ScrapWorksRust</h1>
+  <p>Modded Rust Servers. Built for survivors.</p>
+</header>
+<section>
+  <div class="server-status" id="serverStatus">
+    <h2>Live Server Status</h2>
+    <p id="statusText">Loading...</p>
+    <p id="playerCount">Players: —</p>
+    <p>Wipe Cycle: Monthly<br>Type: PVE / Safe Zones<br>No BP Wipe: Yes</p>
+    <code>connect games.i3r.co.uk:28015</code>
+    <p style="font-size:10px;color:#71717a;">Query port: 28016 · RCON: 28017</p>
+  </div>
+</section>
+<footer>
+  <p>© 2025 ScrapWorksRust. Not affiliated with Facepunch Studios.<br>
+  Contact: support@scrapworksrust.co.uk</p>
+</footer>
+<script>
+async function fetchServer() {
+  const statusText = document.getElementById('statusText');
+  const playerCount = document.getElementById('playerCount');
+  try {
+    const res = await fetch('https://api.battlemetrics.com/servers?filter[search]=games.i3r.co.uk');
+    const data = await res.json();
+    if (data && data.data && data.data.length > 0) {
+      const server = data.data[0].attributes;
+      const players = server.players;
+      const max = server.maxPlayers;
+      const status = server.status;
+      localStorage.setItem('sw_playerCount', players);
+      localStorage.setItem('sw_maxPlayers', max);
+      statusText.innerHTML = status === 'online' ? '<span class="online">Online</span>' : '<span class="offline">Offline</span>';
+      playerCount.textContent = `Players: ${players} / ${max}`;
+    } else {
+      statusText.textContent = 'Temporarily unavailable';
+      playerCount.textContent = 'Players: —';
+    }
+  } catch (err) {
+    const cachedPlayers = localStorage.getItem('sw_playerCount');
+    const cachedMax = localStorage.getItem('sw_maxPlayers');
+    if (cachedPlayers && cachedMax) {
+      statusText.innerHTML = '<span class="offline">Using cached data</span>';
+      playerCount.textContent = `Players: ${cachedPlayers} / ${cachedMax}`;
+    } else {
+      statusText.textContent = 'Temporarily unavailable';
+      playerCount.textContent = 'Players: —';
+    }
+  }
+}
+fetchServer();
+setInterval(fetchServer, 60000);
+</script>
+</body>
+</html>
